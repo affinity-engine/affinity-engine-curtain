@@ -25,7 +25,7 @@ test('visiting /standard-preload', function(assert) {
     assert.ok(progress > 0, 'progress has started');
     assert.ok(progress < 1, 'progress has not completed');
 
-    return delay(100);
+    return delay(1000);
   }).then(() => {
     assert.ok(Ember.$('img').attr('src').indexOf('blob') > -1, 'img is preloaded');
   });

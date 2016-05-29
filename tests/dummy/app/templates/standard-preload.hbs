@@ -2,7 +2,7 @@
   {{#if theater.isLoaded}}
     {{preloadedImage}}
   {{else}}
-    {{#ember-theater-curtain theaterId=theater.theaterId filesToPreload="backdrops:src" completePreload=theater.completePreload as |curtain|}}
+    {{#ember-theater-curtain theaterId=theater.theaterId filesToPreload=(hash backdrops="src" expressions="src") completePreload=theater.completePreload as |curtain|}}
       <h1 data-test={{hook "title"}}>{{curtain.title}}</h1>
 
       <div data-test={{hook "progress"}}>{{curtain.progress}}</div>

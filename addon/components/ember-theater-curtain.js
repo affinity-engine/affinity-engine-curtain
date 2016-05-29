@@ -7,7 +7,7 @@ const {
   Component,
   computed,
   get,
-  isPresent,
+  getProperties,
   run,
   set
 } = Ember;
@@ -44,26 +44,17 @@ export default Component.extend(ConfigurableMixin, {
   init(...args) {
     this._super(...args);
 
-    const fixtureStore = get(this, 'fixtureStore');
-    const preloader = get(this, 'preloader');
-    const paths = get(this, 'filesToPreload').split(' ').filter(isPresent);
-    const fixtureAttributePairs = paths.map((path) => {
-      const [fixture, attribute] = path.split(':');
+    const {
+      filesToPreload,
+      fixtureStore,
+      preloader
+    } = getProperties(this, 'filesToPreload', 'fixtureStore', 'preloader');
 
-      return { fixture, attribute };
-    });
+    Object.keys(filesToPreload).forEach((fixtureName) => {
+      const fixtures = fixtureStore.findAll(camelize(fixtureName));
+      const attribute = filesToPreload[fixtureName];
 
-    fixtureAttributePairs.forEach((pair) => {
-      const fixtureName = camelize(pair.fixture);
-      const fixtures = fixtureStore.findAll(fixtureName);
-      const attribute = pair.attribute;
-
-      fixtures.forEach((fixture) => {
-        const src = get(fixture, attribute);
-        const id = preloader.idFor(fixture, attribute);
-
-        preloader.loadFile({ src, id });
-      });
+      this._preloadFixtures(preloader, fixtures, attribute);
     });
 
     preloader.onProgress(({ progress }) => {
@@ -76,6 +67,15 @@ export default Component.extend(ConfigurableMixin, {
       run(() => {
         this._complete();
       });
+    });
+  },
+
+  _preloadFixtures(preloader, fixtures, attribute) {
+    fixtures.forEach((fixture) => {
+      const src = get(fixture, attribute);
+      const id = preloader.idFor(fixture, attribute);
+
+      preloader.loadFile({ src, id });
     });
   },
 
