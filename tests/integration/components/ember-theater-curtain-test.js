@@ -3,7 +3,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { $hook, initialize as initializeHook } from 'ember-hook';
 import { initialize as initializeMultiton } from 'ember-multiton-service';
-import { initialize as initializeTheater } from 'ember-theater';
+import { deepStub, initialize as initializeTheater } from 'ember-theater';
 
 const { getOwner } = Ember;
 
@@ -21,20 +21,6 @@ moduleForComponent('ember-theater-curtain', 'Integration | Component | ember the
 
 const configurablePriority = ['config.attrs.curtain', 'config.attrs.globals'];
 
-const attrContainerGenerator = (priority) => {
-  const attrContainer = { config: { }, directable: { } };
-
-  priority.split('.').reduce((parentObject, segment) => {
-    const childObject = { };
-
-    parentObject[segment] = childObject;
-
-    return childObject;
-  }, attrContainer);
-
-  return attrContainer;
-}
-
 configurablePriority.forEach((priority) => {
   test('it yields a translated title', function(assert) {
     assert.expect(1);
@@ -48,11 +34,9 @@ configurablePriority.forEach((priority) => {
       }
     };
 
-    const attrContainer = attrContainerGenerator(priority);
+    const { config } = deepStub(priority, 'title', 'foo');
 
-    Ember.set(attrContainer, `${priority}.title`, 'foo');
-
-    this.setProperties({ config: attrContainer.config, translator });
+    this.setProperties({ config, translator });
 
     this.render(hbs`
       {{#ember-theater-curtain config=config translator=translator as |curtain|}}
