@@ -8,6 +8,9 @@ module.exports = {
     var packages = [{
       name: 'PreloadJS',
       target: '0.6.2'
+    }, {
+      name: 'SoundJS',
+      target: '0.6.2'
     }];
 
     return this.addBowerPackagesToProject(packages);
