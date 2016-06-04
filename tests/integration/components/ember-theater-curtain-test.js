@@ -19,9 +19,9 @@ moduleForComponent('ember-theater-curtain', 'Integration | Component | ember the
   }
 });
 
-const configurablePriority = ['config.attrs.curtain', 'config.attrs.globals'];
+const configurationTiers = ['config.attrs.curtain', 'config.attrs.globals'];
 
-configurablePriority.forEach((priority) => {
+configurationTiers.forEach((priority) => {
   test('it yields a translated title', function(assert) {
     assert.expect(1);
 

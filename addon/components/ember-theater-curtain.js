@@ -17,7 +17,7 @@ const { later } = run;
 const { inject: { service } } = Ember;
 const { String: { camelize } } = Ember;
 
-const configurablePriority = ['config.attrs.curtain', 'config.attrs.globals'];
+const configurationTiers = ['config.attrs.curtain', 'config.attrs.globals'];
 
 export default Component.extend(ConfigurableMixin, {
   layout,
@@ -30,10 +30,10 @@ export default Component.extend(ConfigurableMixin, {
   fixtureStore: multiton('ember-theater/fixture-store', 'theaterId'),
   preloader: multiton('ember-theater/preloader', 'theaterId'),
 
-  baseTitle: configurable(configurablePriority, 'title'),
-  transitionOut: configurable(configurablePriority, 'transitionOut.effect'),
-  transitionOutDuration: configurable(configurablePriority, 'transitionOut.duration', 'transitionDuration'),
-  preTransitionOutPauseDuration: configurable(configurablePriority, 'preTransitionOutPauseDuration'),
+  baseTitle: configurable(configurationTiers, 'title'),
+  transitionOut: configurable(configurationTiers, 'transitionOut.effect'),
+  transitionOutDuration: configurable(configurationTiers, 'transitionOut.duration', 'transitionDuration'),
+  preTransitionOutPauseDuration: configurable(configurationTiers, 'preTransitionOutPauseDuration'),
 
   title: computed('baseTitle', {
     get() {
