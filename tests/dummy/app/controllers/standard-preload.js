@@ -11,10 +11,10 @@ const {
 } = Ember;
 
 export default Controller.extend({
-  theaterId: 'standard-preloader',
+  engineId: 'standard-preloader',
 
-  fixtureStore: multiton('affinity-engine/fixture-store', 'theaterId'),
-  preloader: multiton('affinity-engine/preloader', 'theaterId'),
+  fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
+  preloader: multiton('affinity-engine/preloader', 'engineId'),
 
   config: {
     globals: {

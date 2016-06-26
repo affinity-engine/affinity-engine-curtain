@@ -3,11 +3,11 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { $hook, initialize as initializeHook } from 'ember-hook';
 import { initialize as initializeMultiton } from 'ember-multiton-service';
-import { deepStub, initialize as initializeTheater } from 'affinity-engine';
+import { deepStub, initialize as initializeEngine } from 'affinity-engine';
 
 const { getOwner } = Ember;
 
-moduleForComponent('affinity-engine-curtain', 'Integration | Component | ember theater curtain', {
+moduleForComponent('affinity-engine-curtain', 'Integration | Component | ember engine curtain', {
   integration: true,
 
   beforeEach() {
@@ -15,7 +15,7 @@ moduleForComponent('affinity-engine-curtain', 'Integration | Component | ember t
 
     initializeHook();
     initializeMultiton(appInstance);
-    initializeTheater(appInstance);
+    initializeEngine(appInstance);
   }
 });
 

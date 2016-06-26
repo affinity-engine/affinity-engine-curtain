@@ -12,14 +12,14 @@ const {
 } = Ember;
 
 export default MultitonService.extend(BusSubscriberMixin, MultitonIdsMixin, {
-  config: multiton('affinity-engine/config', 'theaterId'),
+  config: multiton('affinity-engine/config', 'engineId'),
 
   idMap: computed(() => Ember.Object.create()),
 
   setupEvents: on('init', function() {
-    const theaterId = get(this, 'theaterId');
+    const engineId = get(this, 'engineId');
 
-    this.on(`et:${theaterId}:reseting`, this, this.clearSounds);
+    this.on(`et:${engineId}:reseting`, this, this.clearSounds);
   }),
 
   findOrCreateInstance(soundId, instanceId = 0) {

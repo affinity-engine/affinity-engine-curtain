@@ -23,12 +23,12 @@ export default Component.extend(ConfigurableMixin, {
   layout,
 
   filesToPreload: '',
-  hook: 'ember_theater_curtain',
+  hook: 'affinity_engine_curtain',
   classNames: ['et-curtain'],
 
   translator: service('affinity-engine/translator'),
-  fixtureStore: multiton('affinity-engine/fixture-store', 'theaterId'),
-  preloader: multiton('affinity-engine/preloader', 'theaterId'),
+  fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
+  preloader: multiton('affinity-engine/preloader', 'engineId'),
 
   baseTitle: configurable(configurationTiers, 'title'),
   transitionOut: configurable(configurationTiers, 'transitionOut.effect'),

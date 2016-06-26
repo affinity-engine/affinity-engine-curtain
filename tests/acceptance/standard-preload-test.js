@@ -17,7 +17,7 @@ test('visiting /standard-preload', function(assert) {
   assert.expect(5);
 
   visit('/standard-preload').then(() => {
-    assert.ok($hook('ember_theater_curtain').length > 0, 'curtain is present');
+    assert.ok($hook('affinity_engine_curtain').length > 0, 'curtain is present');
     assert.equal($hook('title').text().trim(), 'Standard Preload', 'title is correct');
 
     const progress = parseFloat($hook('progress').text().trim());
@@ -25,7 +25,7 @@ test('visiting /standard-preload', function(assert) {
     assert.ok(progress > 0, 'progress has started');
     assert.ok(progress < 1, 'progress has not completed');
 
-    return delay(1000);
+    return delay(1500);
   }).then(() => {
     assert.ok(Ember.$('img').attr('src').indexOf('blob') > -1, 'img is preloaded');
   });
