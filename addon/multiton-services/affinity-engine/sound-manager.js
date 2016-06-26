@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { BusSubscriberMixin } from 'ember-message-bus';
 import multiton, { MultitonService } from 'ember-multiton-service';
-import { MultitonIdsMixin } from 'ember-theater';
+import { MultitonIdsMixin } from 'affinity-engine';
 
 const {
   computed,
@@ -12,7 +12,7 @@ const {
 } = Ember;
 
 export default MultitonService.extend(BusSubscriberMixin, MultitonIdsMixin, {
-  config: multiton('ember-theater/config', 'theaterId'),
+  config: multiton('affinity-engine/config', 'theaterId'),
 
   idMap: computed(() => Ember.Object.create()),
 

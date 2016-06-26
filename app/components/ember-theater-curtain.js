@@ -1,1 +1,0 @@
-export { default } from 'ember-theater-curtain/components/ember-theater-curtain';

@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import multiton from 'ember-multiton-service';
-import backdrops from 'dummy/ember-theater/fixtures/backdrops';
-import characters from 'dummy/ember-theater/fixtures/characters';
-import expressions from 'dummy/ember-theater/fixtures/expressions';
+import backdrops from 'dummy/affinity-engine/fixtures/backdrops';
+import characters from 'dummy/affinity-engine/fixtures/characters';
+import expressions from 'dummy/affinity-engine/fixtures/expressions';
 
 const {
   Controller,
@@ -13,8 +13,8 @@ const {
 export default Controller.extend({
   theaterId: 'standard-preloader',
 
-  fixtureStore: multiton('ember-theater/fixture-store', 'theaterId'),
-  preloader: multiton('ember-theater/preloader', 'theaterId'),
+  fixtureStore: multiton('affinity-engine/fixture-store', 'theaterId'),
+  preloader: multiton('affinity-engine/preloader', 'theaterId'),
 
   config: {
     globals: {

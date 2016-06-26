@@ -1,6 +1,6 @@
-[![npm version](https://badge.fury.io/js/ember-theater-curtain.svg)](https://badge.fury.io/js/ember-theater-curtain)
-[![Build Status](https://travis-ci.org/ember-theater/ember-theater-curtain.svg?branch=master)](https://travis-ci.org/ember-theater/ember-theater-curtain)
+[![npm version](https://badge.fury.io/js/affinity-engine-curtain.svg)](https://badge.fury.io/js/affinity-engine-curtain)
+[![Build Status](https://travis-ci.org/affinity-engine/affinity-engine-curtain.svg?branch=master)](https://travis-ci.org/affinity-engine/affinity-engine-curtain)
 
-# ember-theater-curtain
+# affinity-engine-curtain
 
 You'll find the interactive guides [here](http://www.ember.theater/learn/curtain).

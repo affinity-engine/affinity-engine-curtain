@@ -3,11 +3,11 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { $hook, initialize as initializeHook } from 'ember-hook';
 import { initialize as initializeMultiton } from 'ember-multiton-service';
-import { deepStub, initialize as initializeTheater } from 'ember-theater';
+import { deepStub, initialize as initializeTheater } from 'affinity-engine';
 
 const { getOwner } = Ember;
 
-moduleForComponent('ember-theater-curtain', 'Integration | Component | ember theater curtain', {
+moduleForComponent('affinity-engine-curtain', 'Integration | Component | ember theater curtain', {
   integration: true,
 
   beforeEach() {
@@ -39,9 +39,9 @@ configurationTiers.forEach((priority) => {
     this.setProperties({ config, translator });
 
     this.render(hbs`
-      {{#ember-theater-curtain config=config translator=translator as |curtain|}}
+      {{#affinity-engine-curtain config=config translator=translator as |curtain|}}
         <span data-test={{hook "title"}}>{{curtain.title}}</span>
-      {{/ember-theater-curtain}}
+      {{/affinity-engine-curtain}}
     `);
 
     assert.equal($hook('title').text().trim(), translator.map.foo, `title is correct for ${priority}`);

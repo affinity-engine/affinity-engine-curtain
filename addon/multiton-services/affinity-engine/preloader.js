@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { MultitonService } from 'ember-multiton-service';
-import { MultitonIdsMixin } from 'ember-theater';
+import { MultitonIdsMixin } from 'affinity-engine';
 
 const {
   get,

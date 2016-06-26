@@ -12,7 +12,7 @@ function getParentApp(app) {
 }
 
 module.exports = {
-  name: 'ember-theater-curtain',
+  name: 'affinity-engine-curtain',
 
   included: function(app) {
     this._super.included(app);

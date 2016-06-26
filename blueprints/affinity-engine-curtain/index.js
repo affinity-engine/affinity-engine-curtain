@@ -1,5 +1,5 @@
 module.exports = {
-  description: 'Generates files for ember theater curtain',
+  description: 'Generates files for affinity-engine-curtain',
 
   normalizeEntityName: function() {},
 
