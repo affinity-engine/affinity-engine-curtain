@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { registrant } from 'affinity-engine';
 import multiton from 'ember-multiton-service';
 import backdrops from 'dummy/affinity-engine/fixtures/backdrops';
 import characters from 'dummy/affinity-engine/fixtures/characters';
@@ -14,7 +15,7 @@ export default Controller.extend({
   engineId: 'standard-preloader',
 
   fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
-  preloader: multiton('affinity-engine/preloader', 'engineId'),
+  preloader: registrant('preloader'),
 
   config: {
     globals: {

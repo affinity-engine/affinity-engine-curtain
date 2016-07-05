@@ -8,7 +8,6 @@ const {
   computed,
   get,
   isBlank,
-  on,
   set
 } = Ember;
 
@@ -17,11 +16,13 @@ export default Service.extend(BusSubscriberMixin, MultitonIdsMixin, {
 
   idMap: computed(() => Ember.Object.create()),
 
-  setupEvents: on('init', function() {
+  init(...args) {
+    this._super(...args);
+
     const engineId = get(this, 'engineId');
 
-    this.on(`et:${engineId}:reseting`, this, this.clearSounds);
-  }),
+    this.on(`ae:${engineId}:reseting`, this, this.clearSounds);
+  },
 
   findOrCreateInstance(soundId, instanceId = 0) {
     const instance = get(this, `idMap.${soundId}.${instanceId}`);
