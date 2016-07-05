@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import { MultitonIdsMixin } from 'affinity-engine';
 
 const {
   Service,
@@ -8,7 +7,7 @@ const {
   set
 } = Ember;
 
-export default Service.extend(MultitonIdsMixin, {
+export default Service.extend({
   init(...args) {
     this._super(...args);
 
