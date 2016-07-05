@@ -2,8 +2,6 @@ import Ember from 'ember';
 import { registrant } from 'affinity-engine';
 import multiton from 'ember-multiton-service';
 import backdrops from 'dummy/affinity-engine/fixtures/backdrops';
-import characters from 'dummy/affinity-engine/fixtures/characters';
-import expressions from 'dummy/affinity-engine/fixtures/expressions';
 
 const {
   Controller,
@@ -27,9 +25,7 @@ export default Controller.extend({
   },
 
   fixtures: {
-    backdrops,
-    characters,
-    expressions
+    backdrops
   },
 
   preloadedImage: computed({
