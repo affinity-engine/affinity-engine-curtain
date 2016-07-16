@@ -3,15 +3,7 @@ import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 import { $hook } from 'ember-hook';
 
-moduleForAcceptance('Acceptance | standard preload', {
-  beforeEach() {
-    Ember.$.Velocity.mock = true;
-  },
-
-  afterEach() {
-    Ember.$.Velocity.mock = false;
-  }
-});
+moduleForAcceptance('Acceptance | standard preload');
 
 test('visiting /standard-preload', function(assert) {
   assert.expect(5);

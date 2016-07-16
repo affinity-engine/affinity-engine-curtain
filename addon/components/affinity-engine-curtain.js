@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/affinity-engine-curtain';
-import { ConfigurableMixin, animate, configurable, registrant } from 'affinity-engine';
+import { ConfigurableMixin, configurable, registrant } from 'affinity-engine';
 import multiton from 'ember-multiton-service';
 
 const {
@@ -28,6 +28,7 @@ export default Component.extend(ConfigurableMixin, {
 
   translator: service('affinity-engine/translator'),
   fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
+  animator: registrant('affinity-engine/animator'),
   preloader: registrant('affinity-engine/preloader'),
 
   baseTitle: configurable(configurationTiers, 'title'),
@@ -86,7 +87,7 @@ export default Component.extend(ConfigurableMixin, {
       const effect = get(this, 'transitionOut');
       const duration = get(this, 'transitionOutDuration');
 
-      animate(this.element, effect, { duration }).then(() => {
+      get(this, 'animator').animate(this.element, effect, { duration }).then(() => {
         run(() => {
           this.attrs.completePreload();
         });
