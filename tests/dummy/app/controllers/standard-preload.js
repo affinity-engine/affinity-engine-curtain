@@ -13,7 +13,7 @@ export default Controller.extend({
   engineId: 'standard-preloader',
 
   fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
-  preloader: registrant('preloader'),
+  preloader: registrant('affinity-engine/preloader'),
 
   config: {
     globals: {

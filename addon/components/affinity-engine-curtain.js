@@ -28,7 +28,7 @@ export default Component.extend(ConfigurableMixin, {
 
   translator: service('affinity-engine/translator'),
   fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
-  preloader: registrant('preloader'),
+  preloader: registrant('affinity-engine/preloader'),
 
   baseTitle: configurable(configurationTiers, 'title'),
   transitionOut: configurable(configurationTiers, 'transitionOut.effect'),
