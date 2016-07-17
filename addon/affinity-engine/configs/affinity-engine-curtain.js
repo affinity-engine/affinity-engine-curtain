@@ -1,8 +1,10 @@
 export default {
-  priority: 1,
+  priority: 2,
+  preloader: {
+    preTransitionOutPauseDuration: 750
+  },
   'affinity-engine': {
     preloader: {
-      preTransitionOutPauseDuration: 750,
       path: 'service:affinity-engine/curtain'
     },
     'sound-manager': {
