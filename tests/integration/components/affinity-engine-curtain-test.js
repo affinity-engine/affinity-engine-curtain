@@ -2,9 +2,12 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { $hook, initialize as initializeHook } from 'ember-hook';
-import { initialize as initializeEngine } from 'affinity-engine';
+import { deepStub, initialize as initializeEngine } from 'affinity-engine';
 
-const { getOwner } = Ember;
+const {
+  getProperties,
+  getOwner
+} = Ember;
 
 moduleForComponent('affinity-engine-curtain', 'Integration | Component | ember engine curtain', {
   integration: true,
@@ -17,7 +20,10 @@ moduleForComponent('affinity-engine-curtain', 'Integration | Component | ember e
   }
 });
 
-const configurationTiers = ['curtain', 'globals'];
+const configurationTiers = [
+  'config.attrs.component.curtain',
+  'config.attrs'
+];
 
 configurationTiers.forEach((priority) => {
   test('it yields a translated title', function(assert) {
@@ -32,15 +38,14 @@ configurationTiers.forEach((priority) => {
       }
     };
 
-    const config = {};
+    const stub = deepStub(priority, { title: 'foo' });
 
-    config[priority] = { title: 'foo' };
-
-    this.setProperties({ config, translator });
+    this.setProperties(getProperties(stub, 'config'));
+    this.set('translator', translator);
 
     this.render(hbs`
-      {{#affinity-engine config=config as |engine|}}
-        {{#affinity-engine-curtain engineId=engine.engineId translator=translator as |curtain|}}
+      {{#affinity-engine engineId="foo" as |engine|}}
+        {{#affinity-engine-curtain config=config engineId=engine.engineId translator=translator as |curtain|}}
           <span data-test={{hook "title"}}>{{curtain.title}}</span>
         {{/affinity-engine-curtain}}
       {{/affinity-engine}}

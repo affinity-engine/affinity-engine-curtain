@@ -17,7 +17,10 @@ const { later } = run;
 const { inject: { service } } = Ember;
 const { String: { camelize } } = Ember;
 
-const configurationTiers = ['config.attrs.curtain', 'config.attrs.globals'];
+const configurationTiers = [
+  'config.attrs.component.curtain',
+  'config.attrs'
+];
 
 export default Component.extend(ConfigurableMixin, {
   layout,
@@ -26,6 +29,7 @@ export default Component.extend(ConfigurableMixin, {
   hook: 'affinity_engine_curtain',
   classNames: ['et-curtain'],
 
+  config: multiton('affinity-engine/config', 'engineId'),
   translator: service('affinity-engine/translator'),
   fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
   animator: registrant('affinity-engine/animator'),

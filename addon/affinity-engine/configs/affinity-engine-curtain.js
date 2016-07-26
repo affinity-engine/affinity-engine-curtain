@@ -1,7 +1,9 @@
 export default {
   priority: 2,
-  preloader: {
-    preTransitionOutPauseDuration: 750
+  component: {
+    curtain: {
+      preTransitionOutPauseDuration: 750
+    }
   },
   'affinity-engine': {
     preloader: {
