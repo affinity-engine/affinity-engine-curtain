@@ -21,7 +21,7 @@ export default Service.extend(BusSubscriberMixin, MultitonIdsMixin, {
 
     const engineId = get(this, 'engineId');
 
-    this.on(`ae:${engineId}:shouldResetEngine`, this, this.clearSounds);
+    this.on(`ae:${engineId}:refreshingFromState`, this, this.clearSounds);
   },
 
   findOrCreateInstance(soundId, instanceId = 0) {
