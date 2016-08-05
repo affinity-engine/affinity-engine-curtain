@@ -40,7 +40,9 @@ export default Component.extend(ConfigurableMixin, {
 
   title: computed('baseTitle', {
     get() {
-      return get(this, 'translator').translate(get(this, 'baseTitle'));
+      const title = get(this, 'baseTitle');
+
+      return get(this, 'translator').translate(title) || title;
     }
   }),
 
