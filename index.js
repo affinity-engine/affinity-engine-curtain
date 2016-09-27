@@ -3,28 +3,24 @@
 
 var path = require('path');
 
-function getParentApp(app) {
-  if (typeof app.import !== 'function' && app.app) {
-    return getParentApp(app.app);
-  } else {
-    return app;
-  }
+function findRoot(current) {
+  var app;
+
+  do {
+    app = current.app || app;
+  } while (current.parent && current.parent.parent && (current = current.parent));
+
+  return app;
 }
 
 module.exports = {
   name: 'affinity-engine-curtain',
 
-  included: function(app) {
-    this._super.included(app);
-
-    this.eachAddonInvoke('safeIncluded', [app]);
-
-    app = getParentApp(app);
+  treeForAddon: function() {
+    var app = findRoot(this);
 
     app.import(path.join(app.bowerDirectory, 'PreloadJS/lib/preloadjs-0.6.2.min.js'));
-  },
 
-  safeIncluded: function(app, parent) {
-    this.included(app, parent);
+    return this._super.treeForAddon.apply(this, arguments);
   }
 };
