@@ -25,7 +25,7 @@ export default Service.extend({
   },
 
   getElement(id) {
-    return get(this, 'queue').getResult(id);
+    return get(this, 'queue').getResult(id, true);
   },
 
   loadFile(file) {
