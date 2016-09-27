@@ -24,8 +24,8 @@ export default Service.extend({
     return `${fixture._type}:${fixture.id}:${attribute}`;
   },
 
-  getElement(id) {
-    return get(this, 'queue').getResult(id, true);
+  getElement(id, raw) {
+    return get(this, 'queue').getResult(id, raw);
   },
 
   loadFile(file) {
