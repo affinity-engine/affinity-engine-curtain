@@ -2,7 +2,7 @@
   {{#if engine.isLoaded}}
     {{preloadedImage}}
   {{else}}
-    {{#affinity-engine-curtain engineId=engine.engineId filesToPreload=(hash backdrops="src") completePreload=engine.completePreload as |curtain|}}
+    {{#affinity-engine-curtain engineId=engine.engineId filesToPreload=(hash keyframes="src") completePreload=engine.completePreload as |curtain|}}
       <h1 data-test={{hook "title"}}>{{curtain.title}}</h1>
 
       <div data-test={{hook "progress"}}>{{curtain.progress}}</div>

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { registrant } from 'affinity-engine';
 import multiton from 'ember-multiton-service';
-import backdrops from 'dummy/affinity-engine/fixtures/backdrops';
+import keyframes from 'dummy/affinity-engine/fixtures/keyframes';
 
 const {
   Controller,
@@ -25,16 +25,16 @@ export default Controller.extend({
   },
 
   fixtures: {
-    backdrops
+    keyframes
   },
 
   preloadedImage: computed({
     get() {
       const { fixtureStore, preloader } = getProperties(this, 'fixtureStore', 'preloader');
-      const fixture = fixtureStore.find('backdrops', 'classroom');
+      const fixture = fixtureStore.find('keyframes', 'classroom');
       const id = preloader.idFor(fixture, 'src');
 
-      return preloader.getElement(id);
+      return preloader.getElement(id, false);
     }
   }).readOnly()
 });
