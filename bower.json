@@ -2,8 +2,6 @@
   "name": "affinity-engine-curtain",
   "dependencies": {
     "ember": "~2.8.0",
-    "ember-cli-shims": "0.1.1",
-    "PreloadJS": "createjs-preloadjs#0.6.2",
-    "SoundJS": "createjs-soundjs#0.6.2"
+    "ember-cli-shims": "0.1.1"
   }
 }

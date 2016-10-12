@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import createjs from 'ember-createjs';
 
 const {
   Service,
