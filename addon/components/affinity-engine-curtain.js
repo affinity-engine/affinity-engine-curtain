@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import layout from '../templates/components/affinity-engine-curtain';
 import { ConfigurableMixin, configurable, registrant } from 'affinity-engine';
+import { BusSubscriberMixin } from 'ember-message-bus';
 import multiton from 'ember-multiton-service';
 
 const {
@@ -20,7 +21,7 @@ const configurationTiers = [
   'config.attrs'
 ];
 
-export default Component.extend(ConfigurableMixin, {
+export default Component.extend(BusSubscriberMixin, ConfigurableMixin, {
   layout,
 
   filesToPreload: '',
@@ -50,10 +51,11 @@ export default Component.extend(ConfigurableMixin, {
     this._super(...args);
 
     const {
+      engineId,
       filesToPreload,
       fixtureStore,
       preloader
-    } = getProperties(this, 'filesToPreload', 'fixtureStore', 'preloader');
+    } = getProperties(this, 'engineId', 'filesToPreload', 'fixtureStore', 'preloader');
 
     Object.keys(filesToPreload).forEach((fixtureName) => {
       const fixtures = fixtureStore.findAll(camelize(fixtureName));
@@ -62,17 +64,8 @@ export default Component.extend(ConfigurableMixin, {
       this._preloadFixtures(preloader, fixtures, attribute);
     });
 
-    preloader.onProgress(({ progress }) => {
-      run(() => {
-        set(this, 'progress', progress);
-      });
-    });
-
-    preloader.onComplete(() => {
-      run(() => {
-        this._complete();
-      });
-    });
+    this.on(`ae:${engineId}:preloadProgress`, this._setProgress);
+    this.on(`ae:${engineId}:preloadCompletion`, this._complete);
   },
 
   _preloadFixtures(preloader, fixtures, attribute) {
@@ -82,6 +75,10 @@ export default Component.extend(ConfigurableMixin, {
 
       preloader.loadFile({ src, id });
     });
+  },
+
+  _setProgress({ progress }) {
+    set(this, 'progress', progress);
   },
 
   _complete() {

@@ -19,6 +19,7 @@
   "license": "MIT",
   "devDependencies": {
     "affinity-engine": "git+https://github.com/affinity-engine/affinity-engine.git",
+    "affinity-engine-preloader-createjs": "git+https://github.com/affinity-engine/affinity-engine-preloader-createjs.git",
     "affinity-engine-translator-ember-intl": "git+https://github.com/affinity-engine/affinity-engine-translator-ember-intl.git",
     "babel-eslint": "^7.0.0",
     "broccoli-asset-rev": "^2.4.2",
@@ -49,8 +50,7 @@
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.6",
-    "ember-cli-htmlbars": "^1.0.3",
-    "ember-createjs": "^0.0.1"
+    "ember-cli-htmlbars": "^1.0.3"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
