@@ -16,7 +16,9 @@ export default Controller.extend({
   preloader: registrant('affinity-engine/preloader'),
 
   config: {
-    title: 'Standard Preload',
+    global: {
+      title: 'Standard Preload'
+    },
     plugin: {
       curtain: {
         preTransitionOutPauseDuration: 0

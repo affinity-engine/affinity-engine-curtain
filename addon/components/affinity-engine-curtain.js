@@ -17,7 +17,7 @@ const { String: { camelize } } = Ember;
 
 const configurationTiers = [
   'config.attrs.component.curtain',
-  'config.attrs'
+  'config.attrs.global'
 ];
 
 export default Component.extend(ConfigurableMixin, {
