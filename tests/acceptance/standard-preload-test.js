@@ -8,7 +8,9 @@ moduleForAcceptance('Acceptance | standard preload');
 test('visiting /standard-preload', function(assert) {
   assert.expect(5);
 
-  visit('/standard-preload').then(() => {
+  visit('/standard-preload');
+
+  andThen(() => {
     assert.ok($hook('affinity_engine_curtain').length > 0, 'curtain is present');
     assert.equal($hook('title').text().trim(), 'Standard Preload', 'title is correct');
 
@@ -16,9 +18,11 @@ test('visiting /standard-preload', function(assert) {
 
     assert.ok(progress > 0, 'progress has started');
     assert.ok(progress < 1, 'progress has not completed');
+  });
 
-    return delay(1500);
-  }).then(() => {
+  delay(1500);
+
+  andThen(() => {
     assert.ok(Ember.$('img').attr('src').indexOf('blob') > -1, 'img is preloaded');
   });
 });
