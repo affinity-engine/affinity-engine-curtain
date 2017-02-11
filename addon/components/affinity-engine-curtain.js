@@ -90,7 +90,7 @@ export default Component.extend(ConfigurableMixin, {
 
       get(this, 'animator').animate(this.element, effect, { duration }).then(() => {
         run(() => {
-          this.attrs.completePreload();
+          get(this, 'eBus').publish('readyToRunGame');
         });
       });
     }, pauseDuration);

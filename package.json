@@ -53,7 +53,7 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "demoURL": "http://www.affinityengine.org/components/curtain",
+    "demoURL": "http://www.affinityengine.org/#/components/curtain",
     "after": [
       "affinity-engine"
     ]
