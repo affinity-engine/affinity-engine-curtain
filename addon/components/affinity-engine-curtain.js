@@ -57,15 +57,21 @@ export default Component.extend(ConfigurableMixin, {
       preloader
     } = getProperties(this, 'eBus', 'filesToPreload', 'fixtureStore', 'preloader');
 
+    let preloadableFilesArePresent = false;
+
     Object.keys(filesToPreload).forEach((fixtureName) => {
       const fixtures = fixtureStore.findAll(camelize(fixtureName));
       const attribute = filesToPreload[fixtureName];
 
       this._preloadFixtures(preloader, fixtures, attribute);
+
+      if (fixtures.length > 0) { preloadableFilesArePresent = true; }
     });
 
     eBus.subscribe('preloadProgress', this, this._setProgress);
     eBus.subscribe('preloadCompletion', this, this._complete);
+
+    if (!preloadableFilesArePresent) { this._complete(); }
   },
 
   _preloadFixtures(preloader, fixtures, attribute) {
