@@ -1,6 +1,6 @@
 {
   "name": "affinity-engine-curtain",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Preload assets for the Affinity Engine",
   "keywords": [
     "ember-addon",
@@ -24,9 +24,9 @@
     "ember-cli-htmlbars": "^1.0.10"
   },
   "devDependencies": {
-    "affinity-engine": "git+https://github.com/affinity-engine/affinity-engine.git",
-    "affinity-engine-preloader-createjs": "git+https://github.com/affinity-engine/affinity-engine-preloader-createjs.git",
-    "affinity-engine-translator-ember-intl": "git+https://github.com/affinity-engine/affinity-engine-translator-ember-intl.git",
+    "affinity-engine": "^0.1.0",
+    "affinity-engine-preloader-createjs": "^0.1.0",
+    "affinity-engine-translator-ember-intl": "^0.1.0",
     "babel-eslint": "^6.0.4",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^2.4.1",
