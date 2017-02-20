@@ -1,6 +1,6 @@
 {
   "name": "affinity-engine-curtain",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Preload assets for the Affinity Engine",
   "keywords": [
     "ember-addon",

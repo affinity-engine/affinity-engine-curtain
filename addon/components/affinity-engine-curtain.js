@@ -12,7 +12,7 @@ const {
   set
 } = Ember;
 
-const { later } = run;
+const { next } = run;
 const { String: { camelize } } = Ember;
 
 const configurationTiers = [
@@ -27,7 +27,6 @@ export default Component.extend(ConfigurableMixin, {
   hook: 'affinity_engine_curtain',
   classNames: ['et-curtain'],
 
-  animator: registrant('affinity-engine/animator'),
   config: multiton('affinity-engine/config', 'engineId'),
   eBus: multiton('message-bus', 'engineId'),
   fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
@@ -35,9 +34,6 @@ export default Component.extend(ConfigurableMixin, {
   translator: registrant('affinity-engine/translator'),
 
   baseTitle: configurable(configurationTiers, 'title'),
-  transitionOut: configurable(configurationTiers, 'transitionOut.effect'),
-  transitionOutDuration: configurable(configurationTiers, 'transitionOut.duration', 'transitionDuration'),
-  preTransitionOutPauseDuration: configurable(configurationTiers, 'preTransitionOutPauseDuration'),
 
   title: computed('baseTitle', {
     get() {
@@ -88,17 +84,6 @@ export default Component.extend(ConfigurableMixin, {
   },
 
   _complete() {
-    const pauseDuration = get(this, 'preTransitionOutPauseDuration');
-
-    later(() => {
-      const effect = get(this, 'transitionOut');
-      const duration = get(this, 'transitionOutDuration');
-
-      get(this, 'animator').animate(this.element, effect, { duration }).then(() => {
-        run(() => {
-          get(this, 'eBus').publish('readyToRunGame');
-        });
-      });
-    }, pauseDuration);
+    next(() => get(this, 'eBus').publish('readyToRunGame'));
   }
 });
