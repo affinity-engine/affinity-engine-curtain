@@ -3,4 +3,4 @@
 
 # affinity-engine-curtain
 
-You'll find the interactive guides [here](http://www.affinityengine.org/#/components/curtain).
+You'll find the interactive guides [here](http://www.affinityengine.org/#/api/components/curtain).

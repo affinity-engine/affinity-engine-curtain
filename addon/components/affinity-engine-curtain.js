@@ -16,8 +16,8 @@ const { next } = run;
 const { String: { camelize } } = Ember;
 
 const configurationTiers = [
-  'config.attrs.component.curtain',
-  'config.attrs.global'
+  'component.curtain',
+  'children'
 ];
 
 export default Component.extend(ConfigurableMixin, {
@@ -72,7 +72,7 @@ export default Component.extend(ConfigurableMixin, {
 
   _preloadFixtures(preloader, fixtures, attribute) {
     fixtures.forEach((fixture) => {
-      const src = get(fixture, attribute);
+      const src = get(fixture, `attrs.${attribute}`);
       const id = preloader.idFor(fixture, attribute);
 
       preloader.loadFile({ src, id });

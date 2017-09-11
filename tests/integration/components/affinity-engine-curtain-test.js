@@ -22,7 +22,7 @@ moduleForComponent('affinity-engine-curtain', 'Integration | Component | ember e
 
 const configurationTiers = [
   'config.attrs.component.curtain',
-  'config.attrs.global'
+  'config.attrs.every'
 ];
 
 configurationTiers.forEach((priority) => {
@@ -38,7 +38,7 @@ configurationTiers.forEach((priority) => {
       }
     };
 
-    const stub = deepStub(priority, { title: 'foo' });
+    const stub = deepStub(priority, { attrs: { title: 'foo' } });
 
     this.setProperties(getProperties(stub, 'config'));
     this.set('translator', translator);
