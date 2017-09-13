@@ -16,7 +16,7 @@ export default Controller.extend({
   preloader: registrant('affinity-engine/preloader'),
 
   config: {
-    children: {
+    all: {
       attrs: {
         title: 'Standard Preload'
       }

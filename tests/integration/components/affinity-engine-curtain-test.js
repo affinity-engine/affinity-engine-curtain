@@ -22,7 +22,7 @@ moduleForComponent('affinity-engine-curtain', 'Integration | Component | ember e
 
 const configurationTiers = [
   'config.attrs.component.curtain',
-  'config.attrs.every'
+  'config.attrs.all'
 ];
 
 configurationTiers.forEach((priority) => {
